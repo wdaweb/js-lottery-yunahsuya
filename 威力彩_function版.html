@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>威力彩</title>
+  </head>
+  <body>
+    <script>
+      /* 💡 解題步驟：
+            1. 準備一個空的陣列來裝 A 區的號碼（因為要確保每顆球「不重複」，所以用陣列來儲存已抽過的號碼）👉 let ballBag = []
+            2. 使用 while 迴圈，不斷重複以下步驟，直到陣列裡面有 6 顆球為止：👉 while (ballBag.length < 6)
+                - 產生一個 1～38 的隨機整數（這是彩球的號碼）👉 let ball_6 = Math.floor(Math.random() * 38) + 1
+                - 檢查這顆球有沒有抽過（用 includes() 查看這顆球有沒有在球袋裡）👉 if (!ballBag.includes(ball_6))
+                  - 如果沒有抽過，就把這顆球加入陣列中 👉 ballBag.push(ball_6)
+            
+            3. 產生一個 B 區的號碼（範圍是 1～8，只要抽 1 顆，不用檢查重複，也不需要陣列） 👉 let ball_B = Math.floor(Math.random() * 8) + 1 
+      */
+
+      // ------------------------------------- 開始解題 ---------------------------------------------------
+
+      const lotto = () => {
+        // 球袋 => 設定一個空的容器，等待後續放入數字 (檢查是否有重複的數字)
+        let ballBag = [];
+
+        // ------------------------------------- A 區 ---------------------------------------------------
+
+        //   隨機取得 A 區 6 個亂數 (A 區：隨機抽六顆球（1~38）)
+        while (ballBag.length < 6) {
+          const ball_6 = Math.floor(Math.random() * 38) + 1;
+          if (!ballBag.includes(ball_6)) {
+            ballBag.push(ball_6);
+            document.write(`隨機取得 A 區 6 個號碼(不重複)：${ball_6}  <br>`);
+          }
+        }
+
+        // ------------------------------------- B 區 ---------------------------------------------------
+
+        //  隨機取得 B 區 1 個亂數 (B 區：隨機抽一顆球（1~8）)
+        let ball_1 = Math.floor(Math.random() * 8) + 1;
+        document.write(`隨機取得 B 區 1 個號碼： ${ball_1} <br>`);
+      };
+
+      // ------------------------------------- 呼叫函式 => lotto() ---------------------------------------------------
+      lotto();
+    </script>
+  </body>
+</html>
